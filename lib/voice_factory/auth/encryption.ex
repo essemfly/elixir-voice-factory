@@ -1,4 +1,4 @@
-defmodule VoiceFactory.Encryption do
+defmodule VoiceFactory.Auth.Encryption do
   alias Comeonin.Argon2
 
   @spec hash_password(String.t()) :: String.t()

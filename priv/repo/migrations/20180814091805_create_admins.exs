@@ -3,6 +3,9 @@ defmodule VoiceFactory.Repo.Migrations.CreateAdmins do
 
   def change do
     create table(:admins) do
+      add :email, :string
+      add :password_hash, :string
+      add :name, :string
 
       timestamps()
     end

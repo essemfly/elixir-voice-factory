@@ -20,6 +20,11 @@ config :logger, :console,
   format: "$time $metadata[$level] $message\n",
   metadata: [:user_id]
 
+# Configures Guardian
+config :voice_factory, VoiceFactory.Auth.Guardian,
+  issuer: "voice_factory",
+  secret_key: "Hya/2Aff/xWYq9X2BQYv5rNJf7bKusc2UX9G1DcIdT46fjiWDklFtE1KwRsrrxaq"
+
 # Import environment specific config. This must remain at the bottom
 # of this file so it overrides the configuration defined above.
 import_config "#{Mix.env()}.exs"

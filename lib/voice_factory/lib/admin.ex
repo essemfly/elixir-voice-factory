@@ -4,7 +4,7 @@ defmodule VoiceFactory.Admin do
   alias __MODULE__
 
   alias VoiceFactory.Repo
-  alias VoiceFactory.Encryption
+  alias VoiceFactory.Auth.Encryption
 
 
   schema "admins" do
