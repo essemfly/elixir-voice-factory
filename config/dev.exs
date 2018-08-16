@@ -12,9 +12,13 @@ config :voice_factory, VoiceFactoryWeb.Endpoint,
   code_reloader: true,
   check_origin: false,
   watchers: [
-    node: ["node_modules/webpack/bin/webpack.js", "--watch", "--colors",
-    cd: Path.expand("../assets", __DIR__)
-  ]]
+    node: [
+      "node_modules/webpack/bin/webpack.js",
+      "--watch",
+      "--colors",
+      cd: Path.expand("../assets", __DIR__)
+    ]
+  ]
 
 # ## SSL Support
 #

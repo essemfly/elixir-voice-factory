@@ -3,7 +3,10 @@ defmodule VoiceFactory.Repo.Migrations.CreateSources do
 
   def change do
     create table(:sources) do
-      add :name, :string
+      add :celeb_id, references(:celebs)
+      add :topic, :string
+      add :video_url, :string
+      add :full_text, :string
 
       timestamps()
     end

@@ -3,10 +3,11 @@ defmodule VoiceFactory.Repo.Migrations.CreateSubtitles do
 
   def change do
     create table(:subtitles) do
-      add :from_time, :string
-      add :to_time, :string
+      add :source_id, references(:sources)
+      add :from_time, :integer
+      add :to_time, :integer
       add :text, :string
-      add :time_length, :string
+      add :time_length, :integer
 
       timestamps()
     end

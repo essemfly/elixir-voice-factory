@@ -2,6 +2,9 @@ defmodule VoiceFactory.Source do
   use Ecto.Schema
   import Ecto.Changeset
   alias __MODULE__
+  alias VoiceFactory.Repo
+
+  @derive {Poison.Encoder, only: [:celeb_id, :topic, :video_url, :full_text]}
 
   schema "sources" do
     belongs_to(:celeb, VoiceFactory.Celeb)
@@ -18,5 +21,14 @@ defmodule VoiceFactory.Source do
     source
     |> cast(attrs, [:celeb_id, :topic, :video_url, :full_text])
     |> validate_required([:topic, :video_url, :full_text])
+  end
+
+  def create(attrs) do
+    {:ok, source} =
+      %Source{}
+      |> changeset(attrs)
+      |> Repo.insert()
+
+    source |> Repo.preload(:celeb)
   end
 end
