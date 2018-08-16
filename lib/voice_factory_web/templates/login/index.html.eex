@@ -3,9 +3,9 @@
   <%= form_for @changeset, @action, fn f -> %>
     
     <div class="form-group">
-      <%= label f, :username, class: "control-label" %>
-      <%= text_input f, :username, class: "form-control" %>
-      <%= error_tag f, :username %>
+      <%= label f, :email, class: "control-label" %>
+      <%= text_input f, :email, class: "form-control" %>
+      <%= error_tag f, :email %>
     </div>
     <div class="form-group">
       <%= label f, :password, class: "control-label" %>
@@ -17,6 +17,6 @@
     </div>
   <% end %>
 <% else %>
-  <h1>Hello <%= @maybe_user.username%>!</h1>
+  <h1>Hello <%= @maybe_user.email%>!</h1>
   <span><%= link "Logout", to: login_path(@conn, :logout), method: :post%></span>
 <% end %>
