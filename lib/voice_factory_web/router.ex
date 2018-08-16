@@ -35,4 +35,10 @@ defmodule VoiceFactoryWeb.Router do
 
     get("/secret", LoginController, :secret)
   end
+
+  scope "/main", VoiceFactoryWeb do
+    pipe_through([:browser, :auth, :ensure_auth])
+
+    get("/", MainController, :index)
+  end
 end
