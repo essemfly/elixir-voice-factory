@@ -3,16 +3,17 @@ defmodule VoiceFactory.Auth.Guardian do
 
   use Guardian, otp_app: :voice_factory
 
-  alias VoiceFactory.Admin
+  alias VoiceFactory.Auth
 
   def subject_for_token(user, _claims) do
-    sub = to_string(user.id)
-    {:ok, sub}
+    {:ok, to_string(user.id)}
   end
 
   def resource_from_claims(claims) do
-    id = claims["sub"]
-    user = Admin.get(id)
+    user =
+      claims["sub"]
+      |> Auth.get_user!()
+
     {:ok, user}
   end
 end

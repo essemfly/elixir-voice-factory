@@ -28,8 +28,9 @@ defmodule VoiceFactoryWeb do
 
   def view do
     quote do
-      use Phoenix.View, root: "lib/voice_factory_web/templates",
-                        namespace: VoiceFactoryWeb
+      use Phoenix.View,
+        root: "lib/voice_factory_web/templates",
+        namespace: VoiceFactoryWeb
 
       # Import convenience functions from controllers
       import Phoenix.Controller, only: [get_flash: 2, view_module: 1]

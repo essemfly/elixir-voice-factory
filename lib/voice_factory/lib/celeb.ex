@@ -3,9 +3,8 @@ defmodule VoiceFactory.Celeb do
   import Ecto.Changeset
   alias __MODULE__
 
-
   schema "celebs" do
-    field :name, :string
+    field(:name, :string)
 
     timestamps()
   end

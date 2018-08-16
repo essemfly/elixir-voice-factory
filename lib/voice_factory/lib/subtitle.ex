@@ -3,14 +3,13 @@ defmodule VoiceFactory.Subtitle do
   import Ecto.Changeset
   alias __MODULE__
 
-
   schema "subtitles" do
     belongs_to(:source, VoiceFactory.Source)
 
-    field :from_time, :string
-    field :text, :string
-    field :time_length, :string
-    field :to_time, :string
+    field(:from_time, :string)
+    field(:text, :string)
+    field(:time_length, :string)
+    field(:to_time, :string)
 
     timestamps()
   end
