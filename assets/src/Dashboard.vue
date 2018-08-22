@@ -20,7 +20,6 @@
         </a-list>
       </a-card>
     </div>
-    
   </div>
 </template>
 
@@ -36,33 +35,31 @@ export default {
     };
   },
   created() {
-    this.listCelebs();
-    this.listSources();
+    this.listCelebs(this);
+    this.listSources(this);
   },
+  
   methods: {
-    listCelebs: () => {
+    listCelebs: (vm) => {
       axios.get('/api/celebs').then(response => {
-        this.celebs = response.data;
+        vm.celebs = response.data;
       })
     },
-    listSources: () => {
+    listSources: (vm) => {
       axios.get('/api/sources').then(response => {
-        this.sources = response.data;
+        vm.sources = response.data;
       });
     },
     addCeleb: (celeb_name) => {
       axios.post('/api/celeb', {"celeb_name": celeb_name}).then(response => {
-        console.log(response);
       })
     },
     editCeleb: (index) => {
       axios.put('/api/celeb', {"celeb_name": celeb_name}).then(response => {
-        console.log(response);
       })
     },
     removeCeleb: (index) => {
       axios.delete('/api/celeb', {"celeb_name": celeb_name}).then(response => {
-        console.log(response);
       })
     }
   }
