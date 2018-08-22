@@ -8,11 +8,12 @@ defmodule VoiceFactory.Subtitle do
 
   schema "subtitles" do
     belongs_to(:source, VoiceFactory.Source)
+    belongs_to(:celeb, VoiceFactory.Celeb)
 
-    field(:from_time, :integer)
     field(:text, :string)
-    field(:time_length, :integer)
-    field(:to_time, :integer)
+    field(:from_time, :time)
+    field(:to_time, :time)
+    field(:time_length, :time)
 
     timestamps()
   end
@@ -20,7 +21,7 @@ defmodule VoiceFactory.Subtitle do
   @doc false
   def changeset(%Subtitle{} = subtitle, attrs) do
     subtitle
-    |> cast(attrs, [:source_id, :from_time, :to_time, :text, :time_length])
+    |> cast(attrs, [:source_id, :celeb_id, :from_time, :to_time, :text, :time_length])
     |> validate_required([:text])
   end
 
@@ -30,6 +31,6 @@ defmodule VoiceFactory.Subtitle do
       |> changeset(attrs)
       |> Repo.insert()
 
-    subtitle |> Repo.preload(:source)
+    subtitle |> Repo.preload(:source) |> Repo.preload(:celeb)
   end
 end
