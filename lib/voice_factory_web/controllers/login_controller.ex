@@ -41,7 +41,7 @@ defmodule VoiceFactoryWeb.LoginController do
     conn
     |> put_flash(:success, "Welcome back!")
     |> Guardian.Plug.sign_in(user)
-    |> redirect(to: "/main")
+    |> redirect(to: "/dashboard")
   end
 
   def logout(conn, _) do

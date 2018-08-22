@@ -4,6 +4,7 @@ defmodule VoiceFactoryWeb.MainController do
   alias VoiceFactory.Celeb
   alias VoiceFactory.Source
   alias VoiceFactory.Subtitle
+  alias VoiceFactory.Repo
 
   def index(conn, _params) do
     conn
@@ -53,5 +54,13 @@ defmodule VoiceFactoryWeb.MainController do
   def add_subtitle(conn, %{"source_id" => source_id, "text" => text}) do
     subtitle = Subtitle.create(%{source_id: source_id, text: text})
     json(conn, subtitle)
+  end
+
+  def list_celebs(conn, _params) do
+    json(conn, Repo.all(VoiceFactory.Celeb))
+  end
+
+  def list_sources(conn, _params) do
+    json(conn, Repo.all(VoiceFactory.Source))
   end
 end

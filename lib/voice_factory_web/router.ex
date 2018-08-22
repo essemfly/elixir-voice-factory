@@ -40,7 +40,8 @@ defmodule VoiceFactoryWeb.Router do
   scope "/api", VoiceFactoryWeb do
     # pipe_through([:browser, :auth, :ensure_auth])
     # pipe_through([:browser])
-
+    get("/celebs", MainController, :list_celebs)
+    get("/sources", MainController, :list_sources)
     post("/celeb", MainController, :add_celeb)
     post("/source", MainController, :add_source)
     post("/subtitle", MainController, :add_subtitle)
