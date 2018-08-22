@@ -33,14 +33,14 @@ defmodule VoiceFactoryWeb.Router do
   scope "/", VoiceFactoryWeb do
     pipe_through([:browser, :auth, :ensure_auth])
 
-    get("/secret", LoginController, :secret)
+    get("/main", MainController, :index)
+    get("/subtitle", MainController, :index)
   end
 
-  scope "/main", VoiceFactoryWeb do
+  scope "/api", VoiceFactoryWeb do
     # pipe_through([:browser, :auth, :ensure_auth])
     # pipe_through([:browser])
 
-    get("/", MainController, :index)
     post("/celeb", MainController, :add_celeb)
     post("/source", MainController, :add_source)
     post("/subtitle", MainController, :add_subtitle)

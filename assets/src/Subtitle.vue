@@ -1,12 +1,12 @@
 <template>
-  <div id="test">
+  <div id="subtitle">
     <h3>안녕 테스트 친구들?</h3>
   </div>
 </template>
 
 <script>
 export default {
-  name: "test",
+  name: "subtitle",
   data() {
     return {};
   },

@@ -37,22 +37,33 @@
 </template>
 
 <script>
-import Main from "./Main.vue";
-import Test from "./Test.vue";
+import Dashboard from "./Dashboard.vue";
+import Subtitle from "./Subtitle.vue";
+import moment from "moment";
 
 export default {
   data() {
-    console.log(window.location.pathname);
     return {
       collapsed: false
     };
   },
   computed: {
     currentPath: () => {
-      return "landing";
+      let route = window.location.pathname
+      switch(route) {
+        case "/dashboard":
+          return "dashboard"
+        case "/subtitle":
+          return "subtitle"
+        default:
+          return "dashboard"
+      }
     }
   },
-  components: { landing: Main, test: Test }
+  components: {
+    dashboard: Dashboard,
+    subtitle: Subtitle,
+  }
 };
 </script>
 
